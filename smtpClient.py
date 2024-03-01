@@ -1,7 +1,7 @@
 from socket import *
 
 
-def smtp_client(port=1025, mar ilserver='127.0.0.1'):
+def smtp_client(port=1025, mail_server='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
 
@@ -11,10 +11,8 @@ def smtp_client(port=1025, mar ilserver='127.0.0.1'):
 
     # Fill in start
     clientSocket = socket(AF_INET, SOCK_STREAM)
-    #smtp = gmail.com
-    smtp_server = 127.0.0.1
-    smtp_port = 1025
-    clientSocket.connect(smtp_server, smtp_port)
+    #smtp = gmail.com(127.0.0.1) and port=1025
+    clientSocket.connect(mail_server, port)
     # Fill in end
 
     recv = clientSocket.recv(1024).decode()
@@ -32,28 +30,51 @@ def smtp_client(port=1025, mar ilserver='127.0.0.1'):
 
     # Send MAIL FROM command and handle server response.
     # Fill in start
+    mailFrom = "Mail From: <sender@gmail.com>\r\n"
     clientSocket.send(mailFrom.encode())
+    recv2 = clientSocket.recv(1024).decode()
+    print(recv2)
     # Fill in end
 
     # Send RCPT TO command and handle server response.
     # Fill in start
+    rcptTo = "RCPT To: <recipient@example.com>\r\n"
+    clientSocket.send(rcptTo.encode())
+    recv3 = clientSocket.recv(1024).decode()
+    print(recv3)
     # Fill in end
 
     # Send DATA command and handle server response.
     # Fill in start
+    data = "Data\r\n"
+    clientSocket.send(data.encode())
+    recv4 = clientSocket.recv(1024).decode()
+    print(recv4)
     # Fill in end
 
     # Send message data.
     # Fill in start
+    clientSocket.send(msg.encode())
     # Fill in end
 
     # Message ends with a single period, send message end and handle server response.
     # Fill in start
+    clientSocket.send(endmsg.encode())
+    recv5 = cientSocket.recv(1024).decode()
+    print(recv5)
     # Fill in end
 
     # Send QUIT command and handle server response.
     # Fill in start
+    quitCommand = "QUIT\r\n"
+    clientSocket.send(quitCommand.encode())
+    recv6 = clientSocket.recv(1024).decode()
+    print(recv6)
     # Fill in end
+
+    # Close the socket ********
+    clientSocket.close() #*****
+    # *************************
 
 
 if __name__ == '__main__':
