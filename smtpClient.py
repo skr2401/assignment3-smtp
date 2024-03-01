@@ -37,7 +37,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     clientSocket.send(mailFrom.encode())
     recv2 = clientSocket.recv(1024).decode()
     #print
-    print(recv2)
+    print("After MAIL From command: " + recv2)
     # Fill in end
 
     # Send RCPT TO command and handle server response.
@@ -46,7 +46,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     clientSocket.send(rcptTo.encode())
     recv3 = clientSocket.recv(1024).decode()
     #print
-    print(recv3)
+    print("After RCPT To command: " + recv3)
     # Fill in end
 
     # Send DATA command and handle server response.
@@ -55,7 +55,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     clientSocket.send(data.encode())
     recv4 = clientSocket.recv(1024).decode()
     #print
-    print(recv4)
+    print("After data command: " + recv4)
     # Fill in end
 
     # Send message data.
@@ -68,7 +68,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     clientSocket.send(endmsg.encode())
     recv5 = cientSocket.recv(1024).decode()
     #print
-    print(recv5)
+    print("Response after sending message body: " +recv5)
     # Fill in end
 
     # Send QUIT command and handle server response.
