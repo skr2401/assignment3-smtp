@@ -17,6 +17,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     # Fill in end
 
     recv = clientSocket.recv(1024).decode()
+    #print
     print(recv) #You can use these print statement to validate return codes from the server.
     if recv[:3] != '220':
         print('220 reply not received from server.')
@@ -25,6 +26,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     heloCommand = 'HELO Alice\r\n'
     clientSocket.send(heloCommand.encode())
     recv1 = clientSocket.recv(1024).decode()
+    #print
     print(recv1) 
     if recv1[:3] != '250':
         print('250 reply not received from server.')
@@ -34,6 +36,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     mailFrom = "Mail From: <sender@gmail.com>\r\n"
     clientSocket.send(mailFrom.encode())
     recv2 = clientSocket.recv(1024).decode()
+    #print
     print(recv2)
     # Fill in end
 
@@ -42,6 +45,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     rcptTo = "RCPT To: <recipient@example.com>\r\n"
     clientSocket.send(rcptTo.encode())
     recv3 = clientSocket.recv(1024).decode()
+    #print
     print(recv3)
     # Fill in end
 
@@ -50,6 +54,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     data = "Data\r\n"
     clientSocket.send(data.encode())
     recv4 = clientSocket.recv(1024).decode()
+    #print
     print(recv4)
     # Fill in end
 
@@ -62,6 +67,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     # Fill in start
     clientSocket.send(endmsg.encode())
     recv5 = cientSocket.recv(1024).decode()
+    #print
     print(recv5)
     # Fill in end
 
@@ -70,6 +76,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     quitCommand = "QUIT\r\n"
     clientSocket.send(quitCommand.encode())
     recv6 = clientSocket.recv(1024).decode()
+    #print
     print(recv6)
     # Fill in end
 
