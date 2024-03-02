@@ -14,17 +14,17 @@ def smtp_client(port=1025, mailServer='127.0.0.1'):
     # Fill in start
     clientSocket = socket(AF_INET, SOCK_STREAM)
     #smtp = gmail.com(127.0.0.1) and port=1025
-    clientSocket.connect(mailServer)
+        clientSocket.connect(mailServer)
     # mailserver = ('127.0.0.1', 1025)
     #clientSocket.connect((mailserver))
     # Fill in end
 
-    recv = clientSocket.recv(1024)
-    recv = recv.decode()
+        recv = clientSocket.recv(1024)
+        recv = recv.decode()
     #print
-    print("Message after connection request:" + recv) #You can use these print statement to validate return codes from the server.
-    if recv[:3] != '220':
-        print('220 reply not received from server.')
+        print("Message after connection request:" + recv) #You can use these print statement to validate return codes from the server.
+        if recv[:3] != '220':
+            print('220 reply not received from server.')
 
     # Send HELO command and print server response.
     heloCommand = 'HELO Alice\r\n'
