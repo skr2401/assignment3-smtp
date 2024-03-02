@@ -1,7 +1,7 @@
 from socket import *
 
 
-def smtp_client(port=1025, mail_server='127.0.0.1'):
+def smtp_client(port=1025, mailserver='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
 
@@ -12,8 +12,8 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     # Fill in start
     clientSocket = socket(AF_INET, SOCK_STREAM)
     #smtp = gmail.com(127.0.0.1) and port=1025
-    server = ('127.0.0.1', 1025)
-    clientSocket.connect (server)
+    serverName = '127.0.0.1'
+    clientSocket.connect ((serverName, 1025))
     # Fill in end
 
     recv = clientSocket.recv(1024).decode()
@@ -68,7 +68,7 @@ def smtp_client(port=1025, mail_server='127.0.0.1'):
     clientSocket.send(endmsg.encode())
     recv5 = cientSocket.recv(1024).decode()
     #print
-    print("Response after sending message body: " +recv5)
+    print("Response after sending message body: " + recv5)
     # Fill in end
 
     # Send QUIT command and handle server response.
