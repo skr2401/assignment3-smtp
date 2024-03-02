@@ -22,9 +22,9 @@ def smtp_client(port=1025, mailServer='127.0.0.1'):
         recv = clientSocket.recv(1024)
         recv = recv.decode()
     #print
-        print("Message after connection request:" + recv) #You can use these print statement to validate return codes from the server.
-        if recv[:3] != '220':
-            print('220 reply not received from server.')
+    print("Message after connection request:" + recv) #You can use these print statement to validate return codes from the server.
+    if recv[:3] != '220':
+        print('220 reply not received from server.')
 
     # Send HELO command and print server response.
     heloCommand = 'HELO Alice\r\n'
